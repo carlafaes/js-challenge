@@ -25,14 +25,23 @@ const getData = () => {
     })
     .catch(error => console.log(error));
 }
-getData()
+
 
 const loadData = () => {
   getData(API);
 }
+loadData()
 
 const intersectionObserver = new IntersectionObserver(entries => {
   // logic...
+  console.log(entries)
+  entries.forEach(entry =>{
+    if(entry.isIntersecting){
+      loadData()
+    }else{
+      console.log('is not intersecting')
+    }
+  })
 }, {
   rootMargin: '0px 0px 100% 0px',
 });
