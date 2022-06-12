@@ -1,17 +1,21 @@
 const $app = document.getElementById('app');
 const $observe = document.getElementById('observe');
-const API = 'https://api.escuelajs.co/api/v1/products?page=5&limit=10';
+const API = 'https://api.escuelajs.co/api/v1/products';
+
+let products;
+
 
 const getData = () => {
   fetch(API)
     .then(response => response.json())
     .then(response => {
-      let products = response;
+      products = response;
+      pagination()
       console.log(products)
       let output = products.map(product => {
         // template
         return `
-        <p>${product.id}</p>
+        <p>ID: ${product.id}</p>
         <p>${product.title}</p>
         <h1>${product.category.name}</h1>
         <p>${product.price}</p>
@@ -31,6 +35,21 @@ const loadData = () => {
   getData(API);
 }
 loadData()
+let pagination= ()=>{
+  let show=[]
+  let total=(products.length);
+  let primerProducto=total-198
+  let inicio= primerProducto + 10
+  let current=inicio + 10
+  console.log(total,inicio,primerProducto,current)
+  if(products){
+    products.map(e=>{
+      e
+    })
+  }else{
+    console.log('no existe')
+  }
+}
 
 const intersectionObserver = new IntersectionObserver(entries => {
   // logic...
