@@ -36,19 +36,15 @@ const loadData = () => {
 }
 loadData()
 let pagination= ()=>{
-  let show=[]
-  let total=(products.length);
-  let primerProducto=total-198
-  let inicio= primerProducto + 10
-  let current=inicio + 10
-  console.log(total,inicio,primerProducto,current)
-  if(products){
-    products.map(e=>{
-      e
-    })
-  }else{
-    console.log('no existe')
+  let current=1
+  let product_per_page=10
+  let arrProducts=products.length
+  function totalProduct(){
+    let p=Math.ceil(arrProducts/product_per_page)
+    console.log(p,'p')
   }
+  totalProduct()
+  
 }
 
 const intersectionObserver = new IntersectionObserver(entries => {
